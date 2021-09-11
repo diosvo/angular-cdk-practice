@@ -9,7 +9,7 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./dark-theme-switching/dark-theme-switching.module').then(m => m.DarkThemeSwitchingModule)
+    loadChildren: () => import('./dropdown-search/dropdown-search.module').then(m => m.DropdownSearchModule)
   }
 ]
 

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.form-container {
+  width           : 25rem;
+  padding         : 1rem;
+  background-color: white;
+
+  .w-100 {
+    width: 100%;
+  }
+}
