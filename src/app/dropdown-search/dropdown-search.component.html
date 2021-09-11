@@ -1,8 +1,24 @@
-<form class="form-container">
-  <h3 for="">Searching...</h3>
-  <mat-form-field class="w-100" appearance="fill">
+<form class="container">
+  <mat-form-field
+    class="w-100"
+    [class.active]="showPanel$ | async"
+    appearance="fill"
+    cdkOverlayOrigin
+    #cdkOverlay="cdkOverlayOrigin"
+  >
+    <mat-label>Searching...</mat-label>
     <mat-icon matPrefix>search</mat-icon>
     <input matInput placeholder="Start to type..." autocomplete="off" />
     <mat-icon matSuffix>arrow_drop_down</mat-icon>
   </mat-form-field>
 </form>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  [cdkConnectedOverlayOffsetY]="-20"
+  [cdkConnectedOverlayOrigin]="cdkOverlay"
+  [cdkConnectedOverlayOpen]="showPanel$ | async"
+>
+  <section class="dropdown-search-panel">My Panel</section>
+</ng-template>

@@ -1,13 +1,23 @@
+$-input-width: 25rem;
+
 :host {
   display: block;
 }
 
-.form-container {
-  width           : 25rem;
-  padding         : 1rem;
-  background-color: white;
+.container {
+  width: $-input-width;
 
   .w-100 {
     width: 100%;
   }
+}
+
+.dropdown-search-panel {
+  width     : $-input-width;
+  min-height: 5rem;
+  padding   : 1rem;
+
+  background-color: #F5F6FA;
+  box-sizing      : border-box;
+  box-shadow      : #D4D4F7 0 0.25rem 0.5rem 0;
 }

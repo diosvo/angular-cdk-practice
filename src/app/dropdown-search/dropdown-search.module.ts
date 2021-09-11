@@ -1,3 +1,5 @@
+import { A11yModule } from '@angular/cdk/a11y';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -20,10 +22,12 @@ import { DropdownSearchComponent } from './dropdown-search.component';
       }
     ]),
 
+    A11yModule,
+    OverlayModule,
+
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-
   ]
 })
 export class DropdownSearchModule { }
