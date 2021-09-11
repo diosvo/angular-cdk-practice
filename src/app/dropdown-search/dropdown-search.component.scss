@@ -7,17 +7,27 @@ $-input-width: 25rem;
 .container {
   width: $-input-width;
 
-  .w-100 {
-    width: 100%;
+  .disabled {
+    cursor: not-allowed;
   }
 }
 
 .dropdown-search-panel {
   width     : $-input-width;
-  min-height: 5rem;
-  padding   : 1rem;
+  min-height: auto;
 
   background-color: #F5F6FA;
   box-sizing      : border-box;
   box-shadow      : #D4D4F7 0 0.25rem 0.5rem 0;
+
+  .dropdown-actions {
+    display: flex;
+    padding: 1rem;
+  }
+
+  .dropdown-option {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+  }
 }
