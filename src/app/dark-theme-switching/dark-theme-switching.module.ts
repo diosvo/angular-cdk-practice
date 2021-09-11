@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { RouterModule, Routes } from '@angular/router';
 import { DarkThemeSwitchingComponent } from './dark-theme-switching.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -16,7 +17,10 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+
+    MatInputModule,
+    MatFormFieldModule
   ]
 })
 export class DarkThemeSwitchingModule { }
