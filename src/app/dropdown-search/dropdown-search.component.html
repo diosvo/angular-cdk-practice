@@ -1,4 +1,12 @@
 <form class="container">
+  <mat-slide-toggle
+    *ngIf="stateCtrl.disabled && (showPanel$ | async) === false"
+    (change)="stateCtrl.enable()"
+    style="margin: 1rem 0"
+  >
+    Enabled Search
+  </mat-slide-toggle>
+
   <mat-form-field
     [style.width.%]="100"
     [class.active]="showPanel$ | async"
