@@ -38,15 +38,17 @@ export class DropdownSearchComponent implements OnInit, OnDestroy {
   }
 
   private showDropdownPanel(): void {
-    this.isPanelHidden$ = this.connectedOverlay.backdropClick.pipe(
-      mapTo(false),
-      takeUntil(this.destroy$)
-    );
+    this.isPanelHidden$ = merge(
+      this.connectedOverlay.detach,
+      this.connectedOverlay.backdropClick
+    ).pipe(mapTo(false));
+
     this.isPanelVisible$ = this.focusMonitor.monitor(this.inputEl).pipe(
       filter(focused => !!focused),
       mapTo(true),
       takeUntil(this.destroy$)
     );
+
     this.showPanel$ = merge(this.isPanelHidden$, this.isPanelVisible$);
   }
 
