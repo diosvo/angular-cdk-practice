@@ -8,22 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { RouterModule } from '@angular/router';
 import { DropdownSearchComponent } from './dropdown-search.component';
 
 @NgModule({
-  declarations: [
-    DropdownSearchComponent
-  ],
+  declarations: [DropdownSearchComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: DropdownSearchComponent
-      }
-    ]),
 
     A11yModule,
     OverlayModule,
@@ -33,6 +24,7 @@ import { DropdownSearchComponent } from './dropdown-search.component';
     MatFormFieldModule,
     MatSlideToggleModule,
     MatAutocompleteModule,
-  ]
+  ],
+  exports: [DropdownSearchComponent],
 })
 export class DropdownSearchModule { }

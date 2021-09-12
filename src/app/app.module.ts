@@ -9,7 +9,7 @@ import { ToolbarModule } from './toolbar/toolbar.module';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./dropdown-search/dropdown-search.module').then(m => m.DropdownSearchModule)
+    loadChildren: () => import('./cdk-overlay/cdk-overlay.module').then(m => m.CdkOverlayModule)
   }
 ]
 
