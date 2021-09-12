@@ -1,0 +1,32 @@
+$-input-width: 25rem;
+
+:host {
+  display: block;
+}
+
+.container {
+  width: $-input-width;
+
+  .disabled {
+    cursor: not-allowed;
+  }
+}
+
+.dropdown-search-panel {
+  width     : $-input-width;
+  min-height: auto;
+
+  background-color: #F5F6FA;
+  box-sizing      : border-box;
+
+  .dropdown-actions {
+    display: flex;
+    padding: 1rem;
+  }
+
+  .dropdown-option {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,8 @@
+.content {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+
+  height    : calc(100vh - 4rem);
+  box-sizing: border-box;
+}

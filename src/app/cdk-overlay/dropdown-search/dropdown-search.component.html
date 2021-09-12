@@ -1,0 +1,81 @@
+<form class="container">
+  <mat-form-field
+    [style.width.%]="100"
+    [class.active]="showPanel$ | async"
+    [class.disabled]="stateCtrl.disabled"
+    appearance="fill"
+    cdkOverlayOrigin
+    #cdkOverlay="cdkOverlayOrigin"
+  >
+    <mat-label>State</mat-label>
+    <mat-icon matPrefix>search</mat-icon>
+    <input
+      matInput
+      [formControl]="stateCtrl"
+      placeholder="Start to type..."
+      autocomplete="off"
+    />
+    <mat-icon
+      matSuffix
+      [style.cursor]="'pointer'"
+      *ngIf="stateCtrl.value; else noValue"
+      (click)="stateCtrl.reset()"
+    >
+      clear
+    </mat-icon>
+    <ng-template #noValue>
+      <mat-icon matSuffix>arrow_drop_down</mat-icon>
+    </ng-template>
+  </mat-form-field>
+</form>
+
+<mat-slide-toggle
+  *ngIf="stateCtrl.disabled && (showPanel$ | async) === false"
+  (change)="stateCtrl.enable()"
+  style="margin: 1rem 0"
+>
+  Enabled Search
+</mat-slide-toggle>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayHasBackdrop
+  [cdkConnectedOverlayOrigin]="cdkOverlay"
+  [cdkConnectedOverlayOpen]="showPanel$ | async"
+  [cdkConnectedOverlayPositions]="connectedPosition"
+  [cdkConnectedOverlayScrollStrategy]="scrollStrategy"
+>
+  <section class="dropdown-search-panel">
+    <!-- Actions -->
+    <div class="dropdown-actions">
+      <mat-slide-toggle
+        [checked]="isCaseSensitive"
+        (change)="setCaseSensitive($event)"
+      >
+        Case Sensitive
+      </mat-slide-toggle>
+      <mat-slide-toggle
+        (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()"
+        [style.margin-left.rem]="1"
+      >
+        Disable Search
+      </mat-slide-toggle>
+    </div>
+
+    <!-- Panel Results -->
+    <main [style.border-top]="'1px solid lightgray'">
+      <mat-option
+        *ngFor="let state of filteredStates | async"
+        [value]="state.name"
+      >
+        <div class="dropdown-option">
+          <img class="option-img" aria-hidden height="25" [src]="state.flag" />
+          <span [style.margin-left.rem]="0.5">{{ state.name }}</span>
+          <small [style.margin-left]="'auto'">
+            Population: {{ state.population }}
+          </small>
+        </div>
+      </mat-option>
+    </main>
+  </section>
+</ng-template>
