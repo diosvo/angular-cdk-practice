@@ -1,5 +1,5 @@
 import { FocusMonitor } from '@angular/cdk/a11y';
-import { CdkConnectedOverlay, ConnectedPosition } from '@angular/cdk/overlay';
+import { CdkConnectedOverlay, ConnectedPosition, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
@@ -18,14 +18,16 @@ export class DropdownSearchComponent implements OnInit, OnDestroy {
   filteredStates: Observable<Array<State>>;
   states: Array<State> = states;
   isCaseSensitive = false;
-  
+
   showPanel$: Observable<boolean>;
   private isPanelHidden$: Observable<boolean>;
   private isPanelVisible$: Observable<boolean>;
-  
-  @ViewChild(MatInput, { read: ElementRef, static: true }) private inputEl: ElementRef<HTMLElement>;
-  @ViewChild(CdkConnectedOverlay, { static: true }) private connectedOverlay: CdkConnectedOverlay;
-  
+
+  @ViewChild(MatInput, { read: ElementRef, static: true })
+  private inputEl: ElementRef<HTMLElement>;
+  @ViewChild(CdkConnectedOverlay, { static: true })
+  private connectedOverlay: CdkConnectedOverlay;
+
   private destroy$ = new Subject<boolean>();
   connectedPosition: Array<ConnectedPosition> = [
     {
@@ -42,14 +44,21 @@ export class DropdownSearchComponent implements OnInit, OnDestroy {
       overlayY: 'bottom',
     },
   ];
-  
+  scrollStrategy: ScrollStrategy;
+
   constructor(
     private focusMonitor: FocusMonitor,
+    private scrollStrategyOptions: ScrollStrategyOptions
   ) { }
 
   ngOnInit(): void {
+    this.setScroll();
     this.watchForState();
     this.showDropdownPanel();
+  }
+
+  private setScroll(): void {
+    this.scrollStrategy = this.scrollStrategyOptions.reposition();
   }
 
   private showDropdownPanel(): void {
