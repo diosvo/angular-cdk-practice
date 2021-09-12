@@ -40,9 +40,9 @@
 <ng-template
   cdkConnectedOverlay
   cdkConnectedOverlayHasBackdrop
-  [cdkConnectedOverlayOffsetY]="-20"
   [cdkConnectedOverlayOrigin]="cdkOverlay"
   [cdkConnectedOverlayOpen]="showPanel$ | async"
+  [cdkConnectedOverlayPositions]="connectedPosition"
 >
   <section class="dropdown-search-panel">
     <!-- Actions -->
