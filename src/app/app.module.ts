@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { FooterModule } from './footer/footer.module';
 import { ToolbarModule } from './toolbar/toolbar.module';
-
 
 const routes: Routes = [
   {
@@ -23,6 +23,7 @@ const routes: Routes = [
 
     RouterModule.forRoot(routes),
 
+    FooterModule,
     ToolbarModule
   ],
   providers: [],

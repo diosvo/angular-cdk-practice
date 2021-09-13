@@ -1,0 +1,20 @@
+<footer
+  [style]="{
+    'justify-content': (isWideScreen$ | async) ? 'space-between' : 'flex-end'
+  }"
+>
+  <div *ngIf="isWideScreen$ | async" [ngSwitch]="true" [style.color]="'grey'">
+    Website is working on
+    <span *ngSwitchCase="platform.BLINK">Chrome</span>
+    <span *ngSwitchCase="platform.SAFARI">Safari</span>
+    <span *ngSwitchCase="platform.TRIDENT">Microsoft Trident</span>
+    <span *ngSwitchCase="platform.ANDROID">Android</span>
+    <span *ngSwitchCase="platform.EDGE">Microsoft Edge</span>
+    <span *ngSwitchCase="platform.FIREFOX">Firefox</span>
+    <span *ngSwitchCase="platform.IOS">IOS</span>
+    <span *ngSwitchCase="platform.WEBKIT">Webkit</span>
+    <span> / All are using for learning.</span>
+  </div>
+
+  <div>&copy; 2021 Dios Vo</div>
+</footer>
