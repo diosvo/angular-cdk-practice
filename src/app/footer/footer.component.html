@@ -1,5 +1,9 @@
-<footer [ngSwitch]="true">
-  <div [style.color]="'grey'">
+<footer
+  [style]="{
+    'justify-content': (isWideScreen$ | async) ? 'space-between' : 'flex-end'
+  }"
+>
+  <div *ngIf="isWideScreen$ | async" [ngSwitch]="true" [style.color]="'grey'">
     Website is working on
     <span *ngSwitchCase="platform.BLINK">Chrome</span>
     <span *ngSwitchCase="platform.SAFARI">Safari</span>
